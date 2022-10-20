@@ -1,16 +1,20 @@
-# This is a sample Python script.
+from raspz_camera import take_picture
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+# use function to see whether there is an object:
+# from ultrasonic import object_close
+
+# make a prediction on the category using the neural network:
+# from neural_network import predict_category
+
+# move the waste to the correct bin:
+# from motor_sorting import sort_waste
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+while True:
+    trash_is_present = object_close()
 
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    if trash_is_present:
+        take_picture(picture_name="picture1", flip_camera=True, resolution=(640, 480), sleep_time=2)
+        trash_category = predict_category()  # 0: other trash, 1: plastic
+        sort_waste(trash_category)
+        time.sleep(10) # wait for a few seconds
