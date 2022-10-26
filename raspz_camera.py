@@ -2,7 +2,7 @@ from picamera import PiCamera
 import time
 
 
-def take_picture(picture_name: str, flip_camera: bool, resolution: tuple, sleep_time: float,
+def take_picture(picture_name: str, flip_camera: bool, resolution: tuple, sleep_time: float, img_type="jpeg",
                  folder_name="trash_pictures", window_pos_size=(1400, 0, 500, 500), conf_msg=True):
     """Take a picture with the camera and save it in the "trash_pictures" folder."""
     camera = PiCamera()
@@ -12,7 +12,7 @@ def take_picture(picture_name: str, flip_camera: bool, resolution: tuple, sleep_
     camera.start_preview(fullscreen=False, window=window_pos_size)
 
     time.sleep(sleep_time)
-    camera.capture(f"{folder_name}/{picture_name}.jpeg")
+    camera.capture(f"{folder_name}/{picture_name}.{img_type}")
 
     camera.stop_preview()
 
