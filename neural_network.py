@@ -1,15 +1,15 @@
-# import pickle
 import tensorflow as tf
-
-from picamera import PiCamera
-import time
-
-# file = open("model/X_test, Y_test.pickle", "rb")
-# X_test, Y_test = pickle.load(file)
-# file.close()
+import numpy as np
 
 
-# Load model 1
+def get_image(picture_name, Target_size: tuple, folder_name="trash_pictures", img_type="jpeg"):
+    """Return a preprocessed image from a path with a target size"""
+    image = tf.keras.preprocessing.image.load_img(path=f"{folder_name}/{picture_name}.{img_type}",
+                                                  target_size=Target_size, color_mode='rgb')
+    img_array = np.array([image])
+    return img_array
+
+
 def load_model():
     return tf.keras.models.load_model("model/Neural_Network_Model.h5")
 
@@ -23,19 +23,8 @@ def load_weights():
     return model_2
 
 
-model1 = load_model()
-
-# take picture
-camera = PiCamera()
-camera.vflip()
-camera.start_preview()
-time.sleep(2)
-camera.capture("picture_taken/picture 1.jpg")
-
-# reformat picture
-image = get_image(Path = "picture_taken/picture 1.jpg", Target_size = (224, 224))
-img_array = np.array([image])
-
-# predict category
-predictio_array = model1.predict(img_array)
-category_pred = predictio_array.argmax(axis=1)[0] # 0 is trash, 1 is plastic
+def predict_category(model1, img_array: list):
+    """Predict the category of the given image with the given model. Returns 0 (other) or 1 (plastic)."""
+    prediction_array = model1.predict(img_array)
+    category_predict = prediction_array.argmax(axis=1)[0]  # 0 is trash, 1 is plastic
+    return category_predict
