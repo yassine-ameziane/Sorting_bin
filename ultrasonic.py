@@ -10,6 +10,8 @@ def set_pins(trigger_pin: int, echo_pin):
 
 def get_distance(trigger_out, echo_in):
     """Returns distance of object from ultrasonic sensor in cm."""
+    time1 = time.time()
+    time2 = time.time()
     GPIO.output(trigger_out, GPIO.LOW)
     time.sleep(0.01)
     GPIO.output(trigger_out, GPIO.HIGH)
