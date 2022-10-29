@@ -26,7 +26,7 @@ try:
             image = get_image(picture_name="picture1", Target_size=(224, 224))
 
             if not model:  # load the model if it hasn't be loaded yet
-                model = load_model()
+                model = load_model(model_name="Neural_Network_Model.h5")
 
             trash_category = predict_category(model1=model, img_array=image)  # 0: other trash, 1: plastic
             sort_waste(pin_nr=22, category=categories_dict[trash_category], error_bool=True)  # control the motor

@@ -3,6 +3,7 @@ import time
 
 
 def set_pins(trigger_pin: int, echo_pin):
+    """Set the ultrasonic sensor on the correct pin numbers for the trigger(out) and echo(in) pin."""
     GPIO.setmode(GPIO.BOARD)
     GPIO.setup(trigger_pin, GPIO.OUT)
     GPIO.setup(echo_pin, GPIO.IN)

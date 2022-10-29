@@ -3,18 +3,20 @@ import numpy as np
 
 
 def get_image(picture_name, Target_size: tuple, folder_name="trash_pictures", img_type="jpeg"):
-    """Return a preprocessed image from a path with a target size"""
+    """Return a preprocessed image from a path with a target size."""
     image = tf.keras.preprocessing.image.load_img(path=f"{folder_name}/{picture_name}.{img_type}",
                                                   target_size=Target_size, color_mode='rgb')
     img_array = np.array([image])
     return img_array
 
 
-def load_model():
-    return tf.keras.models.load_model("model/Neural_Network_Model.h5")
+def load_model(model_name, folder="model"):
+    """Load the model and return it."""
+    return tf.keras.models.load_model(f"{folder}/{model_name}")
 
 
 def load_weights():
+    """Load the weights, create the encoder, and return the model."""
     double_convLayers = [(8, (3,3), "relu", "same", (2,2)),
                          (16, (3,3), "relu", "same", (2,2))]
     dense_layers = [(64, "relu")]
