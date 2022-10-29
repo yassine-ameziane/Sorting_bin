@@ -17,10 +17,10 @@ def load_model(model_name, folder="model"):
 
 def load_weights():
     """Load the weights, create the encoder, and return the model."""
-    double_convLayers = [(8, (3,3), "relu", "same", (2,2)),
-                         (16, (3,3), "relu", "same", (2,2))]
+    double_convLayers = [(8, (3, 3), "relu", "same", (2, 2)),
+                         (16, (3, 3), "relu", "same", (2, 2))]
     dense_layers = [(64, "relu")]
-    model_2 = create_encoder(double_convLayers, dense_layers, Input_shape = (224,224,3), Output_size = 2)
+    model_2 = create_encoder(double_convLayers, dense_layers, Input_shape=(224, 224, 3), Output_size=2)
     model_2.load_weights("model/Neural_Network_Weights.h5")
     return model_2
 
