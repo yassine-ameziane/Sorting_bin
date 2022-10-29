@@ -28,3 +28,5 @@ def predict_category(model1, img_array: list):
     prediction_array = model1.predict(img_array)
     category_predict = prediction_array.argmax(axis=1)[0]  # 0 is trash, 1 is plastic
     return category_predict
+
+

@@ -43,4 +43,4 @@ def check_distance_loop(trigger, echo, period: int, pause=1):
         print("cleaned GPIO-setup")
 
 
-check_distance_loop(trigger=16, echo=18, period=30, pause=1)
+# check_distance_loop(trigger=16, echo=18, period=30, pause=1)

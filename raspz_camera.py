@@ -20,4 +20,4 @@ def take_picture(picture_name: str, flip_camera: bool, resolution: tuple, sleep_
         print("picture taken")
 
 
-take_picture(picture_name="picture1", flip_camera=True, resolution=(640, 480), sleep_time=2)
+# take_picture(picture_name="picture1", flip_camera=True, resolution=(640, 480), sleep_time=2)

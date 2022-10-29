@@ -19,7 +19,7 @@ model = False
 try:
     while True:
         distance_object = get_distance(trigger_out=trigger, echo_in=echo)
-        trash_is_present = distance_object < 5  # choose threshold distance
+        trash_is_present = distance_object < 15  # choose threshold distance
 
         if trash_is_present:
             take_picture(picture_name="picture1", flip_camera=True, resolution=(640, 480), sleep_time=2)
@@ -29,10 +29,10 @@ try:
                 model = load_model()
 
             trash_category = predict_category(model1=model, img_array=image)  # 0: other trash, 1: plastic
-            sort_waste(pin_nr=, category=categories_dict[trash_category], error_bool=True)
+            sort_waste(pin_nr=22, category=categories_dict[trash_category], error_bool=True)  # control the motor
 
-            time.sleep(10)  # wait for a few seconds
+            time.sleep(10)
         else:
-            time.sleep(1)
+            time.sleep(1)  # wait for 1 second if no trash has been detected
 finally:
     GPIO.cleanup()

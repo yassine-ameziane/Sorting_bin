@@ -19,6 +19,4 @@ def sort_waste(pin_nr: int, category: str, error_bool: bool):
     elif error_bool:
         raise ValueError("category has to be either 'plastic' or 'other'")
 
-    time.sleep(20)  ############## remove???
-
-sort_waste(pin_nr = 22, "plastic", error_bool=True)
+# sort_waste(pin_nr = 22, "plastic", error_bool=True)
